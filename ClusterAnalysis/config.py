@@ -5,10 +5,11 @@ class Settings(BaseSettings):
     # dataset
     DATASET_MASK: str
     CSV_DELIMITER: str
-    CSV_NEWLINE: str
-    HAS_HEADER: bool
-    IGNORE_ATTRS: list
-
+    
+    # clusters
+    MAX_CLUSTERS: int
+    CLUSTERS_DIR: str
+    
     class Config:
         env_file = ".env"
 

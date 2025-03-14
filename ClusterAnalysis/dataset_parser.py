@@ -1,15 +1,14 @@
-from numpy import array
 from glob import glob
 import pandas as pd
 
 from config import settings
-from dataset_dtypes import dtypes
+from dataset_dtypes import dtypes, features
+
+from sklearn.preprocessing import StandardScaler
 
 
 def parse_csv(
     file_mask: str = settings.DATASET_MASK,
-    has_header: bool = settings.HAS_HEADER,
-    ignore_attrs: list = settings.IGNORE_ATTRS,
             ) -> list:
     csv_files = glob(file_mask)
 
@@ -37,15 +36,13 @@ def parse_csv(
     print(f"Выбран датасет: {file}")
 
     df = pd.read_csv(file, delimiter=settings.CSV_DELIMITER, dtype=dtypes)
-    return df.to_numpy(), df.columns.tolist()
+    return df, df[[col for col in features]], df.columns.tolist()
 
 
-def make_avg_marks(data):
-    return array([[data[i][0], data[i][1], data[i][2]/data[i][0]]
-                 for i in range(len(data))]
-                 )
+def normalize(features):
+    scaler = StandardScaler()
+    return scaler.fit_transform(features), scaler
 
 
-data, labels = parse_csv(settings.DATASET_MASK, settings.HAS_HEADER)
-print(data)
-# data = make_avg_marks(data)
+data, features_unscaled, labels = parse_csv(settings.DATASET_MASK)
+features_scaled, scaler = normalize(features_unscaled)
