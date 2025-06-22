@@ -1,4 +1,4 @@
-﻿Country,Sum of Females  Life Expectancy,Sum of Life Expectancy  (both sexes),Sum of Males  Life Expectancy
+﻿Country,Sum of Females Life Expectancy,Sum of Life Expectancy (both sexes),Sum of Males Life Expectancy
 Chad,57.19,55.24,53.36
 Nigeria,54.94,54.64,54.33
 South Sudan,60.75,57.74,54.76
@@ -198,4 +198,3 @@ Switzerland,85.95,84.09,82.17
 United Arab Emirates,84.32,83.07,82.17
 Australia,85.85,84.07,82.28
 Hong Kong,88.26,85.63,82.97
-Micronesia,149.22,143.28,137.64
